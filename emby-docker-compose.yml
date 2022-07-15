@@ -9,8 +9,8 @@ services:
       - GIDLIST=100
     volumes:
       - './config:/config' # Configuration directory
-      - '/home/chris/docker/nextcloud/data/__groupfolders/1/Videos:/Video'
-      - '/home/chris/docker/nextcloud/data/__groupfolders/1/Music:/Music'
+      - './Videos:/Video'
+      - './Music:/Music'
     ports:
       - "8096:8096" # HTTP port
       - "8920:8920" # HTTPS port
