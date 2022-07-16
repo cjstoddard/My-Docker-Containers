@@ -11,7 +11,7 @@ services:
       - "4443:443/tcp"
     environment:
       TZ: 'America/Chicago' #this is the time zone
-      WEBPASSWORD: "Verbosh-1"
+      WEBPASSWORD: "PASSWORD"
     volumes:
        - './etc-pihole/:/etc/pihole/'
        - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
