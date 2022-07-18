@@ -1,0 +1,13 @@
+version: "3"
+services:
+  torrelay:
+    container_name: torrelay
+    image: vpetersson/torrelay
+    ports:
+      - "9001:9001"
+    environment:
+      NICKNAME: 'MyTorRelay'
+      ACCOUNTINGMAX: '300 GBytes'
+    volumes:
+       - './config:/home/tor/.tor'
+    restart: unless-stopped
