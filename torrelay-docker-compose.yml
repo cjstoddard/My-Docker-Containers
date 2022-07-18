@@ -9,5 +9,5 @@ services:
       NICKNAME: 'MyTorRelay'
       ACCOUNTINGMAX: '300 GBytes'
     volumes:
-       - './config/tor.cfg:/home/tor/.tor'
+       - './config:/home/tor/.tor'
     restart: unless-stopped
