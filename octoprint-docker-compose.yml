@@ -1,0 +1,16 @@
+version: "3"
+services:
+  octoprint:
+    container_name: octoprint
+    image: octoprint/octoprint
+    ports:
+      - "8001:80/tcp"
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/video0:/dev/video0
+    environment:
+      TZ: 'America/Chicago'
+      - ENABLE_MJPG_STREAMER=true
+    volumes:
+      - ./config:/octoprint
+    restart: unless-stopped
