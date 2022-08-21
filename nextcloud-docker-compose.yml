@@ -1,16 +1,40 @@
-version: "3"
+version: '3'
 services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextclouddb
+      - MYSQL_USER=nextclouduser
   nextcloud:
-    image: lscr.io/linuxserver/nextcloud:latest
     container_name: nextcloud
+    ports:
+      - 40010:80
+    links:
+      - mariadb
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=America/Chicago
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextclouddb
+      - MYSQL_USER=nextclouduser
+      - MYSQL_HOST=mariadb
     volumes:
-      - ./config:/config
-      - ./data:/data
-    ports:
-      - 443:443
-      - 80:80
-    restart: unless-stopped
+      - ./html:/var/www/html
+      - ./custom_apps:/var/www/html/custom_apps
+      - ./config:/var/www/html/config
+      - ./data:/var/www/html/data
+      - ./themes:/var/www/html/themes/
+    image: nextcloud
+    restart: always
+volumes:
+  mariadb:
