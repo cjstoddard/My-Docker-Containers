@@ -1,0 +1,13 @@
+version: "3"
+services:
+  WBO:
+    container_name: WBO
+    image: lovasoa/wbo:latest
+    ports:
+      - "5001:80"
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - './boards:/opt/app/server-data'
+    restart: unless-stopped
