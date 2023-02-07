@@ -1,0 +1,11 @@
+version: "3"
+services:
+  quake3:
+    container_name: quake3
+    image: vkryvoruchko/quake3
+    ports:
+      - "27960:27960/udp"
+    volumes:
+      - ./config/pak0.pk3:/usr/share/games/quake3/baseq3/pak0.pk3
+      - ./config/server.cfg:/usr/share/games/quake3/baseq3/server.cfg
+    restart: unless-stopped
