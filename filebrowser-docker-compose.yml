@@ -8,12 +8,11 @@ services:
       - UID=1000
       - GID=1000
       - GIDLIST=100
+      - FB_BASEURL=/filebrowser
     user: "${UID}:${GID}"
     ports:
       - "8282:8080"
     volumes:
       - './data:/data'
-      - './config:/config'
-    environment:
-      - FB_BASEURL=/filebrowser
+      - './config:/config'    
     restart: unless-stopped
