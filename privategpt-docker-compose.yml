@@ -3,7 +3,7 @@ services:
   private-gpt:
     container_name: private-gpt
     image: maadsdocker/tml-privategpt-no-gpu-amd64:latest
-#    image: maadsdocker/tml-privategpt-with-gpu-amd64
+#    image: maadsdocker/tml-privategpt-with-gpu-amd64:latest
     ports:
       - 8001:8001
     environment:
