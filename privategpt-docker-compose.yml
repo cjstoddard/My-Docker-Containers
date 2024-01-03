@@ -8,7 +8,7 @@ services:
       - 8001:8001
     environment:
       - net=host
-      - GPU=0
+      - GPU=0 # Remove this line if you are using the GPU container
       - WEB_CONCURRENCY=1
       - COLLECTION=tml-cisco
     restart: unless-stopped
